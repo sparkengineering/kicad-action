@@ -1,0 +1,50 @@
+name: 'KiCad Action'
+description: 'Automate KiCad tasks, e.g. check ERC/DRC on pull requests or generate production files for releases'
+
+inputs:
+  kicad_sch:
+    description: 'Path to .kicad_sch file'
+  sch_erc:
+    description: 'Whether to run ERC on the schematic'
+    default: false
+  sch_erc_file:
+    description: 'Output filename of ERC report'
+    default: 'erc.rpt'
+  sch_pdf:
+    description: 'Whether to generate PDF from schematic'
+    default: false
+  sch_pdf_file:
+    description: 'Output filename of PDF schematic'
+    default: 'sch.pdf'
+  sch_bom:
+    description: 'Whether to generate BOM from schematic'
+    default: false
+  sch_bom_file:
+    description: 'Output filename of BOM'
+    default: 'bom.csv'
+  sch_bom_preset:
+    description: 'Name of a BOM preset setting to use'
+    default: ''
+
+  kicad_pcb:
+    description: 'Path to .kicad_pcb file'
+  pcb_drc:
+    description: 'Whether to run DRC on the PCB'
+    default: false
+  pcb_drc_file:
+    description: 'Output filename for DRC report'
+    default: 'drc.rpt'
+  pcb_gerbers:
+    description: 'Whether to generate Gerbers from PCB'
+    default: false
+  pcb_gerbers_file:
+    description: 'Output filename of Gerbers ZIP'
+    default: 'gbr.zip'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'zap'
+  color: 'gray-dark'

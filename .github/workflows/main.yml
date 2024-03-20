@@ -1,0 +1,64 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: A job to test this action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Export production files
+        id: production
+        uses: ./
+        if: '!cancelled()'
+        with:
+          kicad_sch: test/test.kicad_sch
+          sch_pdf: true
+          sch_bom: true
+          sch_bom_preset: 'My Preset'
+          kicad_pcb: test/test.kicad_pcb
+          pcb_gerbers: true
+
+      # Upload production files only if generation succeeded
+      - name: Upload production data
+        uses: actions/upload-artifact@v4
+        if: ${{ steps.production.conclusion == 'success' }}
+        with:
+          name: Production files
+          path: |
+            ${{ github.workspace }}/test/sch.pdf
+            ${{ github.workspace }}/test/bom.csv
+            ${{ github.workspace }}/test/gbr.zip
+
+      - name: Run KiCad ERC
+        id: erc
+        uses: ./
+        if: '!cancelled()'
+        with:
+          kicad_sch: test/test.kicad_sch
+          sch_erc: true
+
+      - name: Run KiCad DRC
+        id: drc
+        uses: ./
+        if: '!cancelled()'
+        with:
+          kicad_pcb: test/test.kicad_pcb
+          pcb_drc: true
+
+      # Upload ERC report only if ERC failed
+      - name: Upload ERC report
+        uses: actions/upload-artifact@v4
+        if: ${{ steps.erc.conclusion == 'failure' }}
+        with:
+          name: erc.rpt
+          path: ${{ github.workspace }}/test/erc.rpt
+
+      # Upload DRC report only if DRC failed
+      - name: Upload DRC report
+        uses: actions/upload-artifact@v4
+        if: ${{ steps.drc.conclusion == 'failure' }}
+        with:
+          name: drc.rpt
+          path: ${{ github.workspace }}/test/drc.rpt
