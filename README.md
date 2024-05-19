@@ -37,7 +37,7 @@ jobs:
       # Upload production files only if generation succeeded
       - name: Upload production files
         uses: actions/upload-artifact@v4
-        if: ${{ steps.production.conclusion == 'success' }}
+        if: ${{ !cancelled() && steps.production.conclusion == 'success' }}
         with:
           name: Production files
           path: |
@@ -64,7 +64,7 @@ jobs:
       # Upload ERC report only if ERC failed
       - name: Upload ERC report
         uses: actions/upload-artifact@v4
-        if: ${{ steps.erc.conclusion == 'failure' }}
+        if: ${{ failure() && steps.erc.conclusion == 'failure' }}
         with:
           name: erc.rpt
           path: ${{ github.workspace }}/erc.rpt
@@ -72,7 +72,7 @@ jobs:
       # Upload DRC report only if DRC failed
       - name: Upload DRC report
         uses: actions/upload-artifact@v4
-        if: ${{ steps.drc.conclusion == 'failure' }}
+        if: ${{ failure() && steps.drc.conclusion == 'failure' }}
         with:
           name: drc.rpt
           path: ${{ github.workspace }}/drc.rpt
