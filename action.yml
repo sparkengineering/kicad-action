@@ -25,6 +25,13 @@ inputs:
   sch_bom_preset:
     description: 'Name of a BOM preset setting to use'
     default: ''
+  output_format:
+    description: 'ERC and DRC report files format'
+    type: choice
+    options:
+      - json
+      - report
+    default: 'report'
 
   kicad_pcb:
     description: 'Path to .kicad_pcb file'
