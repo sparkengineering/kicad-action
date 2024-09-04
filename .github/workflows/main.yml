@@ -38,7 +38,7 @@ jobs:
         with:
           kicad_sch: test/test.kicad_sch
           sch_erc: true
-          output_format: json
+          report_format: json
           sch_erc_file: erc.json
 
       - name: Run KiCad DRC
