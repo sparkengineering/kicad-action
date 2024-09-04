@@ -92,7 +92,7 @@ See this example working in the action runs of this repository.
 | `sch_bom`          | Whether to generate BOM from schematic          | `false`   |
 | `sch_bom_file`     | Output filename of BOM                          | `bom.csv` |
 | `sch_bom_preset`   | Name of a BOM preset setting to use             |           |
-| `output_format`    | ERC/DRC report file format (`json` or `report`) | `report`  |
+| `report_format`    | ERC/DRC report file format (`json` or `report`) | `report`  |
 |                    |                                                 |           |
 | `kicad_pcb`        | Path to `.kicad_pcb` file                       |           |
 | `pcb_drc`          | Whether to run DRC on the PCB                   | `false`   |

@@ -25,7 +25,7 @@ inputs:
   sch_bom_preset:
     description: 'Name of a BOM preset setting to use'
     default: ''
-  output_format:
+  report_format:
     description: 'ERC and DRC report files format'
     type: choice
     options:
