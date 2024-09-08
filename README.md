@@ -82,28 +82,30 @@ See this example working in the action runs of this repository.
 
 ## Configuration
 
-| Option             | Description                            | Default   |
-|--------------------|----------------------------------------|-----------|
-| `kicad_sch`        | Path to `.kicad_sch` file              |           |
-| `sch_erc`          | Whether to run ERC on the schematic    | `false`   |
-| `sch_erc_file`     | Output filename of ERC report          | `erc.rpt` |
-| `sch_pdf`          | Whether to generate PDF from schematic | `false`   |
-| `sch_pdf_file`     | Output filename of PDF schematic       | `sch.pdf` |
-| `sch_bom`          | Whether to generate BOM from schematic | `false`   |
-| `sch_bom_file`     | Output filename of BOM                 | `bom.csv` |
-| `sch_bom_preset`   | Name of a BOM preset setting to use    |           |
-|                    |                                        |           |
-| `kicad_pcb`        | Path to `.kicad_pcb` file              |           |
-| `pcb_drc`          | Whether to run DRC on the PCB          | `false`   |
-| `pcb_drc_file`     | Output filename for DRC report         | `drc.rpt` |
-| `pcb_gerbers`      | Whether to generate Gerbers from PCB   | `false`   |
-| `pcb_gerbers_file` | Output filename of Gerbers             | `gbr.zip` |
+| Option             | Description                                     | Default   |
+|--------------------|-------------------------------------------------|-----------|
+| `kicad_sch`        | Path to `.kicad_sch` file                       |           |
+| `sch_erc`          | Whether to run ERC on the schematic             | `false`   |
+| `sch_erc_file`     | Output filename of ERC report                   | `erc.rpt` |
+| `sch_pdf`          | Whether to generate PDF from schematic          | `false`   |
+| `sch_pdf_file`     | Output filename of PDF schematic                | `sch.pdf` |
+| `sch_bom`          | Whether to generate BOM from schematic          | `false`   |
+| `sch_bom_file`     | Output filename of BOM                          | `bom.csv` |
+| `sch_bom_preset`   | Name of a BOM preset setting to use             |           |
+| `report_format`    | ERC/DRC report file format (`json` or `report`) | `report`  |
+|                    |                                                 |           |
+| `kicad_pcb`        | Path to `.kicad_pcb` file                       |           |
+| `pcb_drc`          | Whether to run DRC on the PCB                   | `false`   |
+| `pcb_drc_file`     | Output filename for DRC report                  | `drc.rpt` |
+| `pcb_gerbers`      | Whether to generate Gerbers from PCB            | `false`   |
+| `pcb_gerbers_file` | Output filename of Gerbers                      | `gbr.zip` |
 
 ## Roadmap
 
 - [ ] Add support for more configuration options, e.g. BOM format or Gerber layers
 - [ ] Add a way to specify KiCad version to use
 - [ ] Better detect if steps of this action fail
+- [ ] Find a better way to enforce the default output files extensions depending on the format requesed
 
 ## Contributing
 

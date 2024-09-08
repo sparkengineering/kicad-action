@@ -31,13 +31,15 @@ jobs:
             ${{ github.workspace }}/test/bom.csv
             ${{ github.workspace }}/test/gbr.zip
 
-      - name: Run KiCad ERC
+      - name: Run KiCad ERC with a json output format
         id: erc
         uses: ./
         if: '!cancelled()'
         with:
           kicad_sch: test/test.kicad_sch
           sch_erc: true
+          report_format: json
+          sch_erc_file: erc.json
 
       - name: Run KiCad DRC
         id: drc
