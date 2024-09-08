@@ -25,7 +25,7 @@ jobs:
 
       - name: Export production files
         id: production
-        uses: sparkengineering/kicad-action@v2
+        uses: sparkengineering/kicad-action@v3
         if: '!cancelled()'
         with:
           kicad_sch: my-project.kicad_sch
@@ -47,7 +47,7 @@ jobs:
 
       - name: Run KiCad ERC
         id: erc
-        uses: sparkengineering/kicad-action@v2
+        uses: sparkengineering/kicad-action@v3
         if: '!cancelled()'
         with:
           kicad_sch: my-project.kicad_sch
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run KiCad DRC
         id: drc
-        uses: sparkengineering/kicad-action@v2
+        uses: sparkengineering/kicad-action@v3
         if: '!cancelled()'
         with:
           kicad_pcb: my-project.kicad_pcb
