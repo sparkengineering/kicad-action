@@ -65,13 +65,13 @@ fi
 if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_IMAGE = "true" ]]
 then
   mkdir -p $INPUT_PCB_IMAGE_PATH
-  kicad-cli pcb export gerbers --side top \
+  kicad-cli pcb render --side top \
     --output "$INPUT_PCB_IMAGE_PATH/top.png" \
     "$INPUT_KICAD_PCB"
   kicad-cli pcb render --side bottom \
     --output "$INPUT_PCB_IMAGE_PATH/bottom.png" \
     "$INPUT_KICAD_PCB"
-  ls
+  ls images
 fi
 
 # Return non-zero exit code for ERC or DRC violations
