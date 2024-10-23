@@ -64,12 +64,12 @@ fi
 
 if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_IMAGE = "true" ]]
 then
-  mkdir -p $INPUT_PCB_IMAGE_PATH
+  mkdir -p "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH"
   kicad-cli pcb render --side top \
-    --output "$INPUT_PCB_IMAGE_PATH/top.png" \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH/top.png" \
     "$INPUT_KICAD_PCB"
   kicad-cli pcb render --side bottom \
-    --output "$INPUT_PCB_IMAGE_PATH/bottom.png" \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH/bottom.png" \
     "$INPUT_KICAD_PCB"
   ls images
 fi
