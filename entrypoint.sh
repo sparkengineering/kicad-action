@@ -60,6 +60,16 @@ then
     "$GERBERS_DIR"/*
 fi
 
+if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_IMAGE = "true" ]]
+then
+  kicad-cli pcb export gerbers --side top \
+    --output "$INPUT_IMAGE_PATH/top.png" \
+    "$INPUT_KICAD_PCB"
+  kicad-cli pcb render --side bottom \
+    --output "$INPUT_IMAGE_PATH/bottom.png" \
+    "$INPUT_KICAD_PCB"
+fi
+
 # Return non-zero exit code for ERC or DRC violations
 if [[ $erc_violation -gt 0 ]] || [[ $drc_violation -gt 0 ]]
 then

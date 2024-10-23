@@ -47,7 +47,12 @@ inputs:
   pcb_gerbers_file:
     description: 'Output filename of Gerbers ZIP'
     default: 'gbr.zip'
-
+  pcb_image:
+    description: 'Whether to render the PCB image'
+    default: false
+  pcb_image_path:
+    description: 'Where to put the top.png and bottom.png'
+  
 runs:
   using: 'docker'
   image: 'Dockerfile'
