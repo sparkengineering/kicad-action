@@ -64,3 +64,15 @@ jobs:
         with:
           name: drc.rpt
           path: ${{ github.workspace }}/test/drc.rpt
+
+      - name: Generate rendered images
+        uses: ./
+        with:
+          kicad_pcb: test/test.kicad_pcb
+          pcb_image: true
+
+      - name: Upload Images
+        uses: actions/upload-artifact@v4
+        with:
+          name: images
+          path: ${{ github.workspace }}/test/images

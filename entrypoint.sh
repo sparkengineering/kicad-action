@@ -62,6 +62,7 @@ fi
 
 if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_IMAGE = "true" ]]
 then
+  mkdir -p $INPUT_IMAGE_PATH
   kicad-cli pcb export gerbers --side top \
     --output "$INPUT_IMAGE_PATH/top.png" \
     "$INPUT_KICAD_PCB"

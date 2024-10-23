@@ -52,6 +52,7 @@ inputs:
     default: false
   pcb_image_path:
     description: 'Where to put the top.png and bottom.png'
+    default: 'images'
   
 runs:
   using: 'docker'
