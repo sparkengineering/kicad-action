@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 mkdir -p $HOME/.config
 cp -r /home/kicad/.config/kicad $HOME/.config/
 
@@ -69,6 +71,7 @@ then
   kicad-cli pcb render --side bottom \
     --output "$INPUT_IMAGE_PATH/bottom.png" \
     "$INPUT_KICAD_PCB"
+  ls
 fi
 
 # Return non-zero exit code for ERC or DRC violations
