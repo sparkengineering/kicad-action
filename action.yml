@@ -58,6 +58,9 @@ inputs:
   pcb_model_file:
     description: 'Output filename of PCB model'
     default: 'pcb.step'
+  pcb_model_flags:
+    description: 'Flags to add when exporting STEP files'
+    default: '--no-unspecified --no-dnp --include-tracks  --include-pads  --include-zones'
   
 runs:
   using: 'docker'

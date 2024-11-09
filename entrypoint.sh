@@ -77,7 +77,7 @@ fi
 
 if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_MODEL = "true" ]]
 then
-  kicad-cli pcb export step --no-unspecified  --include-tracks  --include-pads  --include-zones --no-dnp --no-optimize-step \
+  kicad-cli pcb export step $INPUT_PCB_MODEL_FLAGS \
     --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_MODEL_FILE" \
     "$INPUT_KICAD_PCB"
 fi
