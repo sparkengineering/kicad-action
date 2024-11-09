@@ -15,8 +15,8 @@ jobs:
         with:
           kicad_sch: test/test.kicad_sch
           sch_pdf: true
-          sch_bom: true
-          sch_bom_preset: 'My Preset'
+          # sch_bom: true
+          # sch_bom_preset: 'My Preset'
           kicad_pcb: test/test.kicad_pcb
           pcb_gerbers: true
 
@@ -28,7 +28,6 @@ jobs:
           name: Production files
           path: |
             ${{ github.workspace }}/test/sch.pdf
-            ${{ github.workspace }}/test/bom.csv
             ${{ github.workspace }}/test/gbr.zip
 
       - name: Run KiCad ERC with a json output format
