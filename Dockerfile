@@ -1,4 +1,4 @@
-FROM kicad/kicad:nightly-full
+FROM kicad/kicad:nightly-202409
 
 USER root
 
