@@ -73,6 +73,13 @@ then
     "$INPUT_KICAD_PCB"
 fi
 
+if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_MODEL = "true" ]]
+then
+  kicad-cli pcb export step --no-unspecified  --include-tracks  --include-pads  --include-zones --no-dnp --no-optimize-step \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_MODEL_PATH" \
+    "$INPUT_KICAD_PCB"
+fi
+
 # Return non-zero exit code for ERC or DRC violations
 if [[ $erc_violation -gt 0 ]] || [[ $drc_violation -gt 0 ]]
 then

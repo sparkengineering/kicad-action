@@ -32,7 +32,6 @@ inputs:
       - json
       - report
     default: 'report'
-
   kicad_pcb:
     description: 'Path to .kicad_pcb file'
   pcb_drc:
@@ -53,6 +52,12 @@ inputs:
   pcb_image_path:
     description: 'Where to put the top.png and bottom.png'
     default: 'images'
+  pcb_model:
+    description: 'Whether to export the PCB model'
+    default: false
+  pcb_gerbers_file:
+    description: 'Output filename of PCB model'
+    default: 'pcb.step'
   
 runs:
   using: 'docker'
