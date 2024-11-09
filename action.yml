@@ -55,7 +55,7 @@ inputs:
   pcb_model:
     description: 'Whether to export the PCB model'
     default: false
-  pcb_gerbers_file:
+  pcb_model_file:
     description: 'Output filename of PCB model'
     default: 'pcb.step'
   
