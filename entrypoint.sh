@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 mkdir -p $HOME/.config
 cp -r /home/kicad/.config/kicad $HOME/.config/
