@@ -30,10 +30,12 @@ fi
 # Export schematic BOM if requested
 if [[ -n $INPUT_KICAD_SCH ]] && [[ $INPUT_SCH_BOM = "true" ]]
 then
-  kicad-cli sch export bom \
-    --output "`dirname $INPUT_KICAD_SCH`/$INPUT_SCH_BOM_FILE" \
-    --preset "$INPUT_SCH_BOM_PRESET" \
-    "$INPUT_KICAD_SCH"
+  echo "BOM Generation broken in kicad nightly. Once PCB render becomes stable in KiCad 9, fixme."
+  exit 1
+  # kicad-cli sch export bom \
+  #   --output "`dirname $INPUT_KICAD_SCH`/$INPUT_SCH_BOM_FILE" \
+  #   --preset "$INPUT_SCH_BOM_PRESET" \
+  #   "$INPUT_KICAD_SCH"
 fi
 
 # Run DRC if requested
