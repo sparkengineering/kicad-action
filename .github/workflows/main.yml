@@ -19,6 +19,7 @@ jobs:
           sch_bom_preset: 'My Preset'
           kicad_pcb: test/test.kicad_pcb
           pcb_gerbers: true
+          pcb_image: true
 
       # Upload production files only if generation succeeded
       - name: Upload production data
@@ -28,7 +29,9 @@ jobs:
           name: Production files
           path: |
             ${{ github.workspace }}/test/sch.pdf
+            ${{ github.workspace }}/test/bom.csv
             ${{ github.workspace }}/test/gbr.zip
+            ${{ github.workspace }}/test/images
 
       - name: Run KiCad ERC with a json output format
         id: erc
@@ -64,14 +67,3 @@ jobs:
           name: drc.rpt
           path: ${{ github.workspace }}/test/drc.rpt
 
-      - name: Generate rendered images
-        uses: ./
-        with:
-          kicad_pcb: test/test.kicad_pcb
-          pcb_image: true
-
-      - name: Upload Images
-        uses: actions/upload-artifact@v4
-        with:
-          name: images
-          path: ${{ github.workspace }}/test/images
