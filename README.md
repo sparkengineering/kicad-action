@@ -9,6 +9,7 @@ generate production files for releases.
 - Run Design Rules Check (DRC) on PCB
 - Generate PDF and BOM from schematic
 - Generate Gerbers ZIP from PCB
+- Generate raytraced board images
 
 ## Example
 
@@ -82,23 +83,28 @@ See this example working in the action runs of this repository.
 
 ## Configuration
 
-| Option             | Description                                     | Default   |
-|--------------------|-------------------------------------------------|-----------|
-| `kicad_sch`        | Path to `.kicad_sch` file                       |           |
-| `sch_erc`          | Whether to run ERC on the schematic             | `false`   |
-| `sch_erc_file`     | Output filename of ERC report                   | `erc.rpt` |
-| `sch_pdf`          | Whether to generate PDF from schematic          | `false`   |
-| `sch_pdf_file`     | Output filename of PDF schematic                | `sch.pdf` |
-| `sch_bom`          | Whether to generate BOM from schematic          | `false`   |
-| `sch_bom_file`     | Output filename of BOM                          | `bom.csv` |
-| `sch_bom_preset`   | Name of a BOM preset setting to use             |           |
-| `report_format`    | ERC/DRC report file format (`json` or `report`) | `report`  |
-|                    |                                                 |           |
-| `kicad_pcb`        | Path to `.kicad_pcb` file                       |           |
-| `pcb_drc`          | Whether to run DRC on the PCB                   | `false`   |
-| `pcb_drc_file`     | Output filename for DRC report                  | `drc.rpt` |
-| `pcb_gerbers`      | Whether to generate Gerbers from PCB            | `false`   |
-| `pcb_gerbers_file` | Output filename of Gerbers                      | `gbr.zip` |
+| Option             | Description                                     | Default                      |
+|--------------------|-------------------------------------------------|------------------------------|
+| `kicad_sch`        | Path to `.kicad_sch` file                       |                              |
+| `sch_erc`          | Whether to run ERC on the schematic             | `false`                      |
+| `sch_erc_file`     | Output filename of ERC report                   | `erc.rpt`                    |
+| `sch_pdf`          | Whether to generate PDF from schematic          | `false`                      |
+| `sch_pdf_file`     | Output filename of PDF schematic                | `sch.pdf`                    |
+| `sch_bom`          | Whether to generate BOM from schematic          | `false`                      |
+| `sch_bom_file`     | Output filename of BOM                          | `bom.csv`                    |
+| `sch_bom_preset`   | Name of a BOM preset setting to use             |                              |
+| `report_format`    | ERC/DRC report file format (`json` or `report`) | `report`                     |
+|                    |                                                 |                              |
+| `kicad_pcb`        | Path to `.kicad_pcb` file                       |                              |
+| `pcb_drc`          | Whether to run DRC on the PCB                   | `false`                      |
+| `pcb_drc_file`     | Output filename for DRC report                  | `drc.rpt`                    |
+| `pcb_gerbers`      | Whether to generate Gerbers from PCB            | `false`                      |
+| `pcb_gerbers_file` | Output filename of Gerbers                      | `gbr.zip`                    |
+| `pcb_image`        | Whether to render the PCB image                 | `false`                      |
+| `pcb_image_path`   | Where to put the top.png and bottom.png         | `images`                     |
+| `pcb_model`        | Whether to export the PCB model                 | `false`                      |
+| `pcb_model_file`   | Output filename of PCB model                    | `pcb.step`                   |
+| `pcb_model_flags`  | Flags to add when exporting STEP files          | see [action.yml](action.yml) |
 
 ## Roadmap
 
