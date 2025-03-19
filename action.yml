@@ -32,7 +32,6 @@ inputs:
       - json
       - report
     default: 'report'
-
   kicad_pcb:
     description: 'Path to .kicad_pcb file'
   pcb_drc:
@@ -47,7 +46,22 @@ inputs:
   pcb_gerbers_file:
     description: 'Output filename of Gerbers ZIP'
     default: 'gbr.zip'
-
+  pcb_image:
+    description: 'Whether to render the PCB image'
+    default: false
+  pcb_image_path:
+    description: 'Where to put the top.png and bottom.png'
+    default: 'images'
+  pcb_model:
+    description: 'Whether to export the PCB model'
+    default: false
+  pcb_model_file:
+    description: 'Output filename of PCB model'
+    default: 'pcb.step'
+  pcb_model_flags:
+    description: 'Flags to add when exporting STEP files'
+    default: '--no-unspecified --no-dnp --include-tracks  --include-pads  --include-zones'
+  
 runs:
   using: 'docker'
   image: 'Dockerfile'

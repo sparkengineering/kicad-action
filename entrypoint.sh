@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 mkdir -p $HOME/.config
 cp -r /home/kicad/.config/kicad $HOME/.config/
 
@@ -58,6 +60,24 @@ then
   zip -j \
     "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_GERBERS_FILE" \
     "$GERBERS_DIR"/*
+fi
+
+if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_IMAGE = "true" ]]
+then
+  mkdir -p "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH"
+  kicad-cli pcb render --side top \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH/top.png" \
+    "$INPUT_KICAD_PCB"
+  kicad-cli pcb render --side bottom \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_IMAGE_PATH/bottom.png" \
+    "$INPUT_KICAD_PCB"
+fi
+
+if [[ -n $INPUT_KICAD_PCB ]] && [[ $INPUT_PCB_MODEL = "true" ]]
+then
+  kicad-cli pcb export step $INPUT_PCB_MODEL_FLAGS \
+    --output "`dirname $INPUT_KICAD_PCB`/$INPUT_PCB_MODEL_FILE" \
+    "$INPUT_KICAD_PCB"
 fi
 
 # Return non-zero exit code for ERC or DRC violations
